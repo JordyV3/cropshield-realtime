@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icon.svg">
+  <title>CropShield</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+</head>
+
+<body>
+  <header class="absolute inset-x-0 top-0 z-50">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+      <div class="flex lg:flex-1">
+        <a href="/" class="-m-1.5 p-1.5">
+          <span class="sr-only">Your Company</span>
+          <img class="h-8 w-auto " src="/img/icon.svg" alt="icono-cropshield">
+        </a>
+      </div>
+      <div class="flex lg:hidden">
+        <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 "
+          id="menuHam">
+          <span class="sr-only">Open main menu</span>
+          <svg class="h-6 w-6 " fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+            aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </button>
+      </div>
+      <div id="nav" class="hidden lg:flex lg:gap-x-12">
+        <a href="/" class="text-sm font-semibold leading-6 text-gray-900 hover:text-indigo-500 ">Inicio</a>
+        <div class="relative">
+          <button type="button" id="miBoton"
+            class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 hover:text-indigo-500 "
+            aria-expanded="false"> Analisis Cultivos
+            <svg class="h-5 w-5 flex-none text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd"
+                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                clip-rule="evenodd" />
+            </svg>
+          </button>
+          <div id="miMenu"
+            class="lg:hidden absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
+            <div class="p-4">
+              <div class="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
+                <div class="flex-auto ">
+                  <a href="/analisis" class="block font-semibold text-gray-900 hover:text-indigo-500 "> Chile
+                    <span class="absolute inset-0"></span>
+                  </a>
+                  <p class="mt-1 text-gray-600 hover:text-indigo-500 ">Analisis chile jalapeño</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="/control-plagas" class="text-sm font-semibold leading-6 text-gray-900 hover:text-indigo-500 ">Control
+          de plagas</a>
+        <a href="/analisis-tiempo-real"
+          class="text-sm font-semibold leading-6 text-gray-900 hover:text-indigo-500 ">Tiempo real</a>
+      </div>
+      <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+        <a href="/auth/login"
+          class="text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-500 cursor-pointer">Login</a>
+      </div>
+    </nav>
+    <div class="lg:hidden" id="miMenuMovil" role="dialog" aria-modal="true" style="display: none;">
+      <div
+        class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <div class="flex items-center justify-between">
+          <a href="#" class="-m-1.5 p-1.5">
+            <img class="h-8 w-auto" src="img/icon.svg" alt="">
+          </a>
+          <button type="button" id="botonClose" class="-m-2.5 rounded-md p-2.5 text-gray-700">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="mt-6 flow-root">
+          <div class="-my-6 divide-y divide-gray-500/10">
+            <div class="space-y-2 py-6">
+              <div class="-mx-3">
+                <button type="button" id="butonMovilC"
+                  class="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  aria-controls="disclosure-1" aria-expanded="true"> Cultivosss
+                  <svg class="h-5 w-5 flex-none" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd"
+                      d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </button>
+                <div class="mt-2 space-y-2" id="menuMovil" style="display: none;">
+                  <a href="#"
+                    class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50">Chile</a>
+                </div>
+              </div>
+              <a href="#"
+                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Control
+                de plagas</a>
+              <a href="#"
+                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Nosotros</a>
+              <a href="#"
+                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Ver
+                IA</a>
+            </div>
+            <div class="py-6">
+              <a href="/auth/login"
+                class="text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-500 cursor-pointer">Login</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+      <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+        <div class="mt-10">
+          <h2 id="titulo" class="text-1xl font-medium text-gray-900 text-center">Detección de Trips en
+            tiempo Real</h2>
+          <div class="mt-4 space-y-6">
+            <p class="text-sm text-gray-600 text-center">Esta herramienta te permitirá visualizar las imagenes de tus plantas y recibir una evaluación instantánea de las misma.</p>
+          </div>
+        </div>
+        <!-- <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+          <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900"> Detección de Trips en
+            tiempo Real </h2>
+        </div> -->
+        <div class="mt-10 col-12 col-md-4 offset-md-4 text-center">
+          <video id="video" playsinline autoplay style="width: 1px;"></video>
+          <canvas class="rounded-md mb-10" id="canvas" width="400" height="400" style="max-width: 100%;"></canvas>
+          <canvas id="otrocanvas" width="150" height="150" style="display: none"></canvas>
+          <div id="loadingP" style="display: block; margin: 0 auto;"
+            class="animate-spin inline-block w-6 h-6 border-[3px] border-current border-t-transparent text-blue-600 rounded-full"
+            role="status">
+            <span
+              class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)] text-blue-600 ">Loading...</span>
+          </div>
+          <div id="resultado" class=" text-center text-2xl font-bold leading-9 tracking-tight text-gray-900"></div>
+
+          <button
+            class="mt-5 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            id="cambiar-camara" onclick="cambiarCamara();">Cambiar camara</button>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div class="mx-auto w-full max-w-container px-4 sm:px-6 lg:px-8">
+    <div class="border-t border-slate-900/5 py-10 text-center">
+      <img class="h-8 w-auto" src="/img/icon.svg" style="margin: 0 auto;" alt="icono-cropshield">
+      <p class="mt-5 text-center text-sm leading-6 text-slate-500">© 2023 Jordy Vega. All rights reserved.</p>
+    </div>
+  </div>
+
+  <script src="./js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+
+  <script type="text/javascript">
+
+    var tamano = 400;
+    var video = document.getElementById("video");
+    var canvas = document.getElementById("canvas");
+    var otrocanvas = document.getElementById("otrocanvas");
+    var ctx = canvas.getContext("2d");
+    var currentStream = null;
+    var facingMode = "user";
+
+    var modelo = null;
+
+    (async () => {
+      console.log("Cargando modelo...");
+      modelo = await tf.loadLayersModel("model.json");
+      console.log("Modelo cargado");
+    })();
+
+    window.onload = function () {
+      mostrarCamara();
+    }
+
+    function mostrarCamara() {
+      var opciones = {
+        audio: false,
+        video: {
+          width: tamano, height: tamano
+        }
+      }
+
+      if (navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia(opciones)
+          .then(function (stream) {
+            currentStream = stream;
+            video.srcObject = currentStream;
+            procesarCamara();
+            predecir();
+          })
+          .catch(function (err) {
+            alert("No se pudo utilizar la camara :(");
+            console.log(err);
+            alert(err);
+          })
+      } else {
+        alert("No existe la funcion getUserMedia");
+      }
+    }
+
+    function cambiarCamara() {
+      if (currentStream) {
+        currentStream.getTracks().forEach(track => {
+          track.stop();
+        });
+      }
+
+      facingMode = facingMode == "user" ? "environment" : "user";
+
+      var opciones = {
+        audio: false,
+        video: {
+          facingMode: facingMode, width: tamano, height: tamano
+        }
+      };
+
+
+      navigator.mediaDevices.getUserMedia(opciones)
+        .then(function (stream) {
+          currentStream = stream;
+          video.srcObject = currentStream;
+        })
+        .catch(function (err) {
+          console.log("Oops, hubo un error", err);
+        })
+    }
+
+    function procesarCamara() {
+      ctx.drawImage(video, 0, 0, tamano, tamano, 0, 0, tamano, tamano);
+      setTimeout(procesarCamara, 20);
+    }
+
+    function predecir() {
+      if (modelo != null) {
+        resample_single(canvas, 100, 100, otrocanvas);
+
+        var ctx2 = otrocanvas.getContext("2d");
+        var imgData = ctx2.getImageData(0, 0, 100, 100);
+
+        var arr = [];
+        var arr100 = [];
+
+        for (var p = 0; p < imgData.data.length; p += 4) {
+          var rojo = imgData.data[p] / 255;
+          var verde = imgData.data[p + 1] / 255;
+          var azul = imgData.data[p + 2] / 255;
+
+          var gris = (rojo + verde + azul) / 3;
+
+          arr100.push([gris]);
+          if (arr100.length == 100) {
+            arr.push(arr100);
+            arr100 = [];
+          }
+        }
+
+        arr = [arr];
+
+        var tensor = tf.tensor4d(arr);
+        var resultado = modelo.predict(tensor).dataSync();
+
+        var respuesta;
+        if (resultado <= .5) {
+          respuesta = "TRIPS";
+        } else {
+          respuesta = "SANA";
+        }
+        document.getElementById("resultado").innerHTML = respuesta;
+
+      }
+
+      setTimeout(predecir, 150);
+    }
+
+    function resample_single(canvas, width, height, resize_canvas) {
+      var width_source = canvas.width;
+      var height_source = canvas.height;
+      width = Math.round(width);
+      height = Math.round(height);
+
+      var ratio_w = width_source / width;
+      var ratio_h = height_source / height;
+      var ratio_w_half = Math.ceil(ratio_w / 2);
+      var ratio_h_half = Math.ceil(ratio_h / 2);
+
+      var ctx = canvas.getContext("2d");
+      var ctx2 = resize_canvas.getContext("2d");
+      var img = ctx.getImageData(0, 0, width_source, height_source);
+      var img2 = ctx2.createImageData(width, height);
+      var data = img.data;
+      var data2 = img2.data;
+
+      for (var j = 0; j < height; j++) {
+        for (var i = 0; i < width; i++) {
+          var x2 = (i + j * width) * 4;
+          var weight = 0;
+          var weights = 0;
+          var weights_alpha = 0;
+          var gx_r = 0;
+          var gx_g = 0;
+          var gx_b = 0;
+          var gx_a = 0;
+          var center_y = (j + 0.5) * ratio_h;
+          var yy_start = Math.floor(j * ratio_h);
+          var yy_stop = Math.ceil((j + 1) * ratio_h);
+          for (var yy = yy_start; yy < yy_stop; yy++) {
+            var dy = Math.abs(center_y - (yy + 0.5)) / ratio_h_half;
+            var center_x = (i + 0.5) * ratio_w;
+            var w0 = dy * dy; //pre-calc part of w
+            var xx_start = Math.floor(i * ratio_w);
+            var xx_stop = Math.ceil((i + 1) * ratio_w);
+            for (var xx = xx_start; xx < xx_stop; xx++) {
+              var dx = Math.abs(center_x - (xx + 0.5)) / ratio_w_half;
+              var w = Math.sqrt(w0 + dx * dx);
+              if (w >= 1) {
+                continue;
+              }
+
+              weight = 2 * w * w * w - 3 * w * w + 1;
+              var pos_x = 4 * (xx + yy * width_source);
+
+              gx_a += weight * data[pos_x + 3];
+              weights_alpha += weight;
+
+              if (data[pos_x + 3] < 255)
+                weight = weight * data[pos_x + 3] / 250;
+              gx_r += weight * data[pos_x];
+              gx_g += weight * data[pos_x + 1];
+              gx_b += weight * data[pos_x + 2];
+              weights += weight;
+            }
+          }
+          data2[x2] = gx_r / weights;
+          data2[x2 + 1] = gx_g / weights;
+          data2[x2 + 2] = gx_b / weights;
+          data2[x2 + 3] = gx_a / weights_alpha;
+        }
+      }
+
+      ctx2.putImageData(img2, 0, 0);
+    }
+  </script>
+</body>
+
+</html>
